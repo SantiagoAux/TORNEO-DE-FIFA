@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TORNEO DE FIFA LA GANGA</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="ambient ambient-three"></div>
+
+    <header class="site-header">
+      <a class="brand-lockup" href="#dashboard" aria-label="Torneo FIFA La Ganga, inicio">
+        <span class="brand-mark">⚽</span>
+        <span><strong>TORNEO FIFA LA GANGA</strong><small>EA FC 27 · ARENA OFICIAL</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#management">Participantes</a>
+        <a href="#draw">Sorteo</a>
+        <a href="#bracket">Bracket</a>
+      </nav>
+      <button class="header-mode" id="toggleSpectatorBtn" type="button"><span class="status-dot"></span> MODO ESPECTADOR</button>
+    </header>
+
+    <div class="app-shell" id="dashboard">
+      <header class="hero panel glow">
+        <div class="topbar">
+          <span class="badge badge-live">EA FC 27 • TORNEO OFICIAL</span>
+          <span class="badge badge-soft">MODO ESPECTADOR</span>
+        </div>
+
+        <div class="hero-main">
+          <div>
+            <p class="eyebrow">⚽ VIDEOJUEGO DE FÚTBOL • ESPECTÁCULO</p>
+            <h1>TORNEO FIFA <span>LA GANGA</span></h1>
+            <h2>QUE GANE EL MEJOR 🎮⚽</h2>
+            <p class="hero-copy">El coliseo gamer oficial de La Ganga. Primer torneo de FIFA BROTHEEERRR</p>
+          </div>
+          <div class="trophy-card">
+            <div class="trophy-ring"></div>
+            <div class="trophy-icon">🏆</div>
+            <div class="trophy-meta">
+              <strong>CAMPEÓN</strong>
+              <span>LA GANGA 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="drawTeamsBtn">🎲 REALIZAR SORTEO</button>
+          <button class="btn btn-secondary" id="generateMatchesBtn">🔥 GENERAR ENFRENTAMIENTOS</button>
+          <a class="btn btn-ghost" href="#bracket">🏆 VER CUADRO</a>
+        </div>
+      </header>
+
+      <section class="phase-strip panel" aria-label="Ruta del torneo">
+        <div class="phase-heading"><h3>RUTA DEL TORNEO</h3><span>EL CAMINO A LA FINAL</span></div>
+        <div class="phase-steps">
+          <div class="phase-step complete"><small>FASE 01</small><strong>REGISTRO</strong><span>Participantes</span></div>
+          <div class="phase-step complete"><small>FASE 02</small><strong>SORTEO</strong><span>Equipos asignados</span></div>
+          <div class="phase-step active"><small>EN VIVO</small><strong>OCTAVOS</strong><span>Eliminación directa</span></div>
+          <div class="phase-step"><small>FASE 04</small><strong>CUARTOS</strong><span>8 clasificados</span></div>
+          <div class="phase-step"><small>FASE 05</small><strong>SEMIFINALES</strong><span>Top 4</span></div>
+          <div class="phase-step final"><small>FASE 06</small><strong>GRAN FINAL</strong><span>Por la copa</span></div>
+        </div>
+      </section>
+
+      <section class="dashboard-stats" aria-label="Resumen del torneo">
+        <div class="section-kicker"><span>ESTADO DEL TORNEO</span><span>ACTUALIZADO EN TIEMPO REAL</span></div>
+        <div class="dashboard-grid" id="dashboardStats"></div>
+      </section>
+
+      <section class="dashboard-feature-grid">
+        <article class="panel featured-panel">
+          <div class="section-header">
+            <h3>⚡ PARTIDO DESTACADO</h3>
+            <span class="live-label"><i></i> ARENA LA GANGA</span>
+          </div>
+          <div id="featuredMatchup" class="featured-matchup"></div>
+        </article>
+        <aside class="panel quick-actions">
+          <div class="section-header"><h3>CENTRO DE ACCIÓN RÁPIDA</h3><span class="bolt-mark">↯</span></div>
+          <a href="#draw"><span class="quick-icon green-icon">🎲</span><span><strong>REALIZAR SORTEO</strong><small>Asignar clubes a jugadores</small></span><b>›</b></a>
+          <a href="#bracket"><span class="quick-icon gold-icon">🏆</span><span><strong>VER BRACKET</strong><small>Seguir las rondas en vivo</small></span><b>›</b></a>
+          <a href="#management"><span class="quick-icon red-icon">👥</span><span><strong>GESTIONAR JUGADORES</strong><small>Participantes y equipos</small></span><b>›</b></a>
+          <button type="button" id="dashboardSpectatorBtn"><span class="quick-icon cyan-icon">▣</span><span><strong>MODO ESPECTADOR</strong><small>Vista limpia para pantalla grande</small></span><b>›</b></button>
+        </aside>
+      </section>
+
+      <section class="dashboard-lower-grid">
+        <article class="panel recent-panel" id="results">
+          <div class="section-header"><h3>📋 RESULTADOS RECIENTES</h3><span class="section-meta">ACTA OFICIAL</span></div>
+          <div class="history-list compact-history" id="recentMatches"></div>
+        </article>
+        <article class="panel scorers-panel">
+          <div class="section-header"><h3>🥇 LÍDERES DEL TORNEO</h3><span class="section-meta">GOLES A FAVOR</span></div>
+          <div class="top-scorers" id="topScorers"></div>
+        </article>
+      </section>
+
+      <main class="main-grid" id="management">
+        <section class="panel">
+          <div class="section-header">
+            <h3>👥 PARTICIPANTES</h3>
+            <div class="header-actions">
+              <button class="btn btn-small" id="loadSampleParticipantsBtn">GENERAR PRUEBA</button>
+              <button class="btn btn-small btn-danger" id="clearParticipantsBtn">LIMPIAR</button>
+            </div>
+          </div>
+
+          <form id="participantForm" class="stack-form">
+            <div class="field-row"> 
+              <input id="participantName" type="text" placeholder="Nombre del participante" maxlength="40" />
+              <button class="btn btn-primary" type="submit">AGREGAR</button>
+            </div>
+            <textarea id="participantBulkInput" rows="5" placeholder="Santiago&#10;Andrés&#10;Juan&#10;Sebastián"></textarea>
+            <div class="field-row auto">
+              <button class="btn btn-small" type="button" id="importParticipantsBtn">IMPORTAR NOMBRES</button>
+            </div>
+          </form>
+
+          <div class="list" id="participantsList"></div>
+        </section>
+
+        <section class="panel">
+          <div class="section-header">
+            <h3>⚽ EQUIPOS</h3>
+            <div class="header-actions">
+              <button class="btn btn-small" id="loadSampleTeamsBtn">CARGAR PRUEBA</button>
+              <button class="btn btn-small btn-danger" id="clearTeamsBtn">LIMPIAR</button>
+            </div>
+          </div>
+
+          <form id="teamForm" class="stack-form">
+            <div class="field-row">
+              <input id="teamName" type="text" placeholder="Nombre del equipo" maxlength="40" />
+              <input id="teamCountry" type="text" placeholder="País" maxlength="30" />
+            </div>
+            <div class="field-row">
+              <input id="teamColor" type="color" value="#00ff87" />
+              <input id="teamRating" type="number" min="60" max="99" placeholder="Rating" value="88" />
+              <button class="btn btn-primary" type="submit">AGREGAR</button>
+            </div>
+          </form>
+
+          <div class="list" id="teamsList"></div>
+        </section>
+
+        <section class="panel span-2">
+          <div class="section-header">
+            <h3>⚙️ CONFIGURACIÓN</h3>
+          </div>
+          <div class="settings-grid">
+            <label class="toggle">
+              <input type="checkbox" id="allowRepeatTeams" />
+              <span>Permitir equipos repetidos</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" id="soundToggle" />
+              <span>Sonido activado</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" id="animationsToggle" checked />
+              <span>Animaciones activadas</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" id="bestLoserToggle" checked />
+              <span>Regla del mejor perdedor</span>
+            </label>
+          </div>
+          <p class="best-loser-note">Se comparan eliminados de todas las rondas por diferencia de gol acumulada. Si varios empatan en la mejor diferencia, se crea una llave de desempate en el bracket; si un partido acaba empatado, se decide por penales.</p>
+          <div class="field-row auto action-row">
+            <button class="btn btn-danger" id="resetTournamentBtn">⚠️ REINICIAR TORNEO</button>
+          </div>
+        </section>
+      </main>
+
+      <section class="panel draw-panel" id="draw">
+        <div class="section-header">
+          <h3>🎲 SORTEO DE EQUIPOS</h3>
+        </div>
+        <div class="draw-grid">
+          <div class="card-spotlight">
+            <div class="mini-label">PARTICIPANTE</div>
+            <div id="lotteryPlayer">-</div>
+            <div class="vs">VS</div>
+            <div class="mini-label">EQUIPO</div>
+            <div id="lotteryTeam">-</div>
+          </div>
+          <div class="draw-results" id="drawResultsList"></div>
+        </div>
+      </section>
+
+      <section class="panel bracket-panel" id="bracket">
+        <div class="section-header">
+          <h3>🏆 CUADRO DEL TORNEO</h3>
+          <div class="header-actions">
+            <button class="btn btn-small" id="advanceRoundBtn">AVANZAR RONDA</button>
+          </div>
+        </div>
+        <div id="bracketContainer" class="bracket-container"></div>
+      </section>
+
+      <section class="panel stats-panel">
+        <div class="section-header">
+          <h3>📊 ESTADÍSTICAS</h3>
+        </div>
+        <div id="statsPanel" class="stats-panel-grid"></div>
+      </section>
+
+      <section class="panel history-panel" id="historyArchive">
+        <div class="section-header">
+          <h3>📜 HISTORIAL</h3>
+        </div>
+        <div id="historyList" class="history-list"></div>
+      </section>
+
+      <section class="panel champion-panel" id="championPanel">
+        <div class="section-header">
+          <h3>👑 CAMPEÓN</h3>
+        </div>
+        <div id="championContent" class="champion-content"></div>
+      </section>
+    </div>
+
+    <div id="resultModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h4>🔥 REGISTRAR RESULTADO</h4>
+          <button class="close-btn" id="closeModalBtn" type="button">×</button>
+        </div>
+        <div id="matchModalBody" class="modal-body"></div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
